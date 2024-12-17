@@ -10,18 +10,8 @@
             <CarouselOrganism />
 
             <!-- Listado de productos -->
-            <section class="home__wrapper__list">
-                <div class="home__wrapper__list__product-card" v-for="(product, index) in products" :key="index">
-                    <img :src="product.imageUrl" alt="Imagen del producto" class="home__wrapper__list__product-card__image">
-                    <div class="home__wrapper__list__product-card__info">
-                        <h3 class="home__wrapper__list__product-card__name">{{ product.name }}</h3>
-                        <p class="home__wrapper__list__product-card__price">${{ product.price }}</p>
-                        <div class="home__wrapper__list__product-card__stars">
-                            <span v-for="star in product.stars" :key="star">★</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            
+            <ListProducts/>
         </article>
         <Footer/>
     </main>
@@ -30,22 +20,27 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import CarouselOrganism from "../../organisms/carousel/Carousel.organism.vue";
+import ListProducts from "../../organisms/list-products/ListProducts.organism.vue";
 import Footer from "../../organisms/footer/Footer.organism.vue";
 import { getImages } from "../../../services/ApiImages"; // Importa tu servicio aquí
-
+import { useRouter } from "vue-router";
 // Datos de productos
 const products = ref<any[]>([]);
-
+const router :any = useRouter();
 onMounted(async () => {
     const images = await  getImages("t-shirts", 15);
-    
+        console.log(images)
     // Mapeamos la respuesta de las imágenes y le añadimos datos adicionales para los productos
     products.value = images.map((image: any, index: number) => ({
+        id: image.id,
         name: `Producto ${index + 1}`, // Nombre del producto con un índice
         price: '000', // Precio quemado como '000'
         stars: Array.from({ length: 3 }), // 3 estrellas por defecto
         imageUrl: image.largeImageURL // Usamos la URL de la imagen obtenida del servicio
     }));
 });
+function openProduct(id:any){
+    router.push('product/:'+id)
+}
 </script>
 <style scoped src="./Home.template.scss"></style>

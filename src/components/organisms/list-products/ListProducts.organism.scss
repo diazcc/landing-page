@@ -1,0 +1,49 @@
+.list-products {
+    gap: 20px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+        background-color: white;
+        justify-content: center;
+    &__product-card {
+        min-width: 15rem;
+        max-width: 15rem;
+        min-height: 17rem;
+        max-height: 17rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        justify-content: center;
+        box-sizing: border-box;
+        overflow: hidden;
+        &__image {
+            width: auto;
+            height: 10rem;
+            object-fit: contain;
+        }
+
+        &__info {
+        }
+
+        &__name {
+            font-size: 1.2em;
+        }
+
+        &__price {
+            font-size: 1em;
+            color: #333;
+        }
+
+        &__stars {
+            color: #ffd700;
+            font-size: 1.2em;
+        }
+
+        &:hover {
+            cursor: pointer;
+            transition: all ease-out .2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.267);
+        }
+    }
+}

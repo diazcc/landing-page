@@ -16,11 +16,10 @@
             <label for="message" class="footer__contact__form-label">Mensaje:</label>
             <textarea id="message" v-model="form.message" required class="footer__contact__form-input"></textarea>
           </div>
-          <button type="submit" class="footer__contact__form-button">Enviar</button>
+          <button type="submit" class="style-button">Enviar</button>
         </form>
       </section>
   
-      <!-- Derechos reservados -->
       <section class="footer__rights">
         <p>&copy; 2024 QUEST. Todos los derechos reservados.</p>
       </section>
@@ -30,17 +29,14 @@
   <script setup lang="ts">
   import { ref } from 'vue';
   
-  // Datos del formulario
   const form = ref({
     name: '',
     email: '',
     message: ''
   });
   
-  // Función para manejar el envío del formulario (puedes agregar lógica para enviar el mensaje)
   const handleSubmit = () => {
     console.log('Formulario enviado:', form.value);
-    // Lógica para enviar el formulario (puede ser una API o un servicio)
     alert('¡Gracias por contactarnos!');
     form.value.name = '';
     form.value.email = '';

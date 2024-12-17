@@ -29,6 +29,7 @@ export const getImageById = async (id=1) => {
         id: id,
       },
     });
+    console.log(response);
     if (response.data.hits.length > 0) {
       return response.data.hits[0];
     } else {
