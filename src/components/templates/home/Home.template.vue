@@ -1,56 +1,51 @@
 <template>
     <main class="home">
         <header class="home__header">
-            <h1 class="home__header__logo">
-                QUEST
-            </h1>
+            <h1 class="home__header__logo">QUEST</h1>
         </header>
         <article class="home__wrapper">
-            <img src="https://quest.vtexassets.com/assets/vtex.file-manager-graphql/images/959d392c-0fa9-4bb0-b27b-0ddcd2377f90___2d55841aa901169d51768b92bf0c7648.jpg"
-                alt="" class="home__wrapper__presentation">
+            <img
+                src="https://quest.vtexassets.com/assets/vtex.file-manager-graphql/images/959d392c-0fa9-4bb0-b27b-0ddcd2377f90___2d55841aa901169d51768b92bf0c7648.jpg"
+                alt="Presentación" class="home__wrapper__presentation">
             <CarouselOrganism />
+
+            <!-- Listado de productos -->
+            <section class="home__wrapper__list">
+                <div class="home__wrapper__list__product-card" v-for="(product, index) in products" :key="index">
+                    <img :src="product.imageUrl" alt="Imagen del producto" class="home__wrapper__list__product-card__image">
+                    <div class="home__wrapper__list__product-card__info">
+                        <h3 class="home__wrapper__list__product-card__name">{{ product.name }}</h3>
+                        <p class="home__wrapper__list__product-card__price">${{ product.price }}</p>
+                        <div class="home__wrapper__list__product-card__stars">
+                            <span v-for="star in product.stars" :key="star">★</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </article>
-        <footer class="home__footer">
-            footer
-            <nav class="home__footer__navegation">
-                nav
-            </nav>
-        </footer>
+        <Footer/>
     </main>
 </template>
+
 <script setup lang="ts">
+import { ref, onMounted } from "vue";
+import CarouselOrganism from "../../organisms/carousel/Carousel.organism.vue";
+import Footer from "../../organisms/footer/Footer.organism.vue";
+import { getImages } from "../../../services/ApiImages"; // Importa tu servicio aquí
 
-import { ref, onMounted, onBeforeUnmount } from "vue";
-import CarouselOrganism from "../../organisms/Carousel.organism.vue";
-const images = [
-    "image1.jpg", // Reemplázalo con las rutas de tus imágenes
-    "image2.jpg",
-    "image3.jpg",
-];
+// Datos de productos
+const products = ref<any[]>([]);
 
-const currentSlide = ref(0);
-let interval: any = null;
-
-const nextSlide = () => {
-    currentSlide.value = (currentSlide.value + 1) % images.length;
-};
-const startAutoSlide = () => {
-    interval = setInterval(() => {
-        nextSlide();
-    }, 3000);
-};
-
-const stopAutoSlide = () => {
-    clearInterval(interval);
-};
-
-onMounted(() => {
-    startAutoSlide();
+onMounted(async () => {
+    const images = await  getImages("t-shirts", 15);
+    
+    // Mapeamos la respuesta de las imágenes y le añadimos datos adicionales para los productos
+    products.value = images.map((image: any, index: number) => ({
+        name: `Producto ${index + 1}`, // Nombre del producto con un índice
+        price: '000', // Precio quemado como '000'
+        stars: Array.from({ length: 3 }), // 3 estrellas por defecto
+        imageUrl: image.largeImageURL // Usamos la URL de la imagen obtenida del servicio
+    }));
 });
-
-onBeforeUnmount(() => {
-    stopAutoSlide();
-});
-
 </script>
 <style scoped src="./Home.template.scss"></style>

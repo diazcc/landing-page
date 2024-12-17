@@ -29,11 +29,49 @@
         &__carousel {
             padding: $padding;
         }
-    }
-    &__footer {
-        height: 10rem;
-        padding: $padding;
-        &__navegation {
+        &__list {
+            gap: 20px;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            box-sizing: border-box;
+            &__product-card {
+                min-width: 15rem;
+                max-width: 15rem;
+                min-height: 17rem;
+                max-height: 17rem;
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                justify-content: center;
+                box-sizing: border-box;
+                overflow: hidden;
+                &__image {
+                    width: auto;
+                    height: 10rem;
+                    object-fit: contain;
+                }
+
+                &__info {
+                }
+
+                &__name {
+                    font-size: 1.2em;
+                }
+
+                &__price {
+                    font-size: 1em;
+                    color: #333;
+                }
+
+                &__stars {
+                    color: #ffd700;
+                    font-size: 1.2em;
+                }
+            }
         }
     }
+    
 }

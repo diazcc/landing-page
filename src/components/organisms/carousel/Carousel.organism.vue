@@ -40,7 +40,7 @@
   
   <script setup>
   import { ref, onMounted, computed } from "vue";
-  import { getImages } from "../../services/ApiImages"; // Importa tu servicio aquí
+  import { getImages } from "../../../services/ApiImages"; // Importa tu servicio aquí
   
   // Variables reactivas
   const bestSellerImage = ref([]); // Almacena todas las imágenes

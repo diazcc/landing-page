@@ -1,0 +1,66 @@
+.footer {
+    padding: 20px;
+    background: linear-gradient(to bottom, rgb(139, 0, 0), rgb(97, 0, 0));
+    text-align: center;
+    padding: $padding;
+    color: white;
+    &__contact {
+        margin-bottom: 20px;
+
+        &__title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        &__form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 40rem;
+            margin: 0rem auto;
+        }
+
+        &__form-group {
+            margin-bottom: 10px;
+            display: flex;
+            gap: 0.5rem;
+            width: 100%;
+            
+        }
+
+        &__form-label {
+            flex: 1;
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        &__form-input {
+            flex: 1;
+            width: 300px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        &__form-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        &__form-button:hover {
+            background-color: #0056b3;
+        }
+    }
+
+    &__rights {
+        margin-top: 20px;
+        font-size: 1rem;
+        color: #888;
+    }
+}
