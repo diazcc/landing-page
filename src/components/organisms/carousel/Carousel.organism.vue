@@ -1,23 +1,23 @@
 <template>
-    <section class="carousel">
+    <ul class="carousel">
       <!-- Estado de carga -->
-      <div v-if="loading" class="loading-state">
+      <li v-if="loading" class="loading-state">
         Cargando imágenes...
-      </div>
+      </li>
   
       <!-- Estado de error -->
-      <div v-else-if="error" class="error-state">
+      <li v-else-if="error" class="error-state">
         {{ error }}
-      </div>
+      </li>
   
       <!-- Estado de datos vacíos -->
-      <div v-else-if="topImages.length === 0" class="empty-state">
+      <li v-else-if="topImages.length === 0" class="empty-state">
         No hay imágenes disponibles en este momento.
-      </div>
+      </li>
   
       <!-- Carrusel de imágenes -->
-      <div v-else class="carousel-container">
-        <div
+      <li v-else class="carousel-container">
+        <a
           class="carousel-track"
           :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
         >
@@ -29,13 +29,13 @@
           >
             <img :src="image.url" alt="Imagen de producto" />
           </div>
-        </div>
+        </a>
   
         <!-- Botones de navegación -->
         <button class="carousel-button prev" @click="prevSlide">❮</button>
         <button class="carousel-button next" @click="nextSlide">❯</button>
-      </div>
-    </section>
+      </li>
+    </ul>
   </template>
   
   <script setup>

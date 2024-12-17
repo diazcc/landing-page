@@ -11,17 +11,17 @@
         class="home__product__image"
       />
       <p v-if="error" class="error-message">{{ error }}</p>
-      <div v-if="product">
+      <article v-if="product">
         <h2 class="product-name">{{ product.name }}</h2>
         <p class="product-description">{{ product.description }}</p>
-        <div class="product-stars">
+        <a class="product-stars">
           <span v-for="n in product.stars" :key="n" class="star">★</span>
-        </div>
+        </a>
         <p class="product-price">${{ product.price }}</p>
         <button @click="redirectToWhatsApp" class="style-button-wpp">
           Comprar
         </button>
-      </div>
+      </article>
     </section>
     <ListProducts />
     <Footer />
