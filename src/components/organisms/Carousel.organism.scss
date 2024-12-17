@@ -1,0 +1,60 @@
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  height: 35rem;
+  &-container {
+    height: 100%;
+    overflow: hidden;
+  }
+  &-track {
+    height: 100%;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  &-slide {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+  &-slide img {
+    height: 100%;
+    display: block;
+
+  }
+  &-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.5rem;
+    z-index: 10;
+  }
+  &-button.prev {
+    left: 10px;
+  }
+  &-button.next {
+    right: 10px;
+  }
+  &-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* Estados */
+.loading-state,
+.error-state,
+.empty-state {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 20px;
+  color: #555;
+}
+
